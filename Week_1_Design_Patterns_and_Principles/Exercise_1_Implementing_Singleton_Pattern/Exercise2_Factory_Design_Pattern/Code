@@ -1,1 +1,39 @@
-hii
+interface Animal{
+    void speak();
+}
+
+class Dog implements Animal{
+    public void speak(){
+        System.out.println("Dog barks...");
+    }
+}
+
+class Cat implements Animal{
+    public void speak(){
+        System.out.println("Cat meowwsss");
+    }
+}
+
+class Animalfactory{
+    public Animal getAnimal(String animal){
+        if(animal.equalsIgnoreCase("dog")){
+            return new Dog();
+        }
+        else if(animal.equalsIgnoreCase("cat")){
+            return new Cat();
+        }
+        else{
+            return null;
+        }
+    }
+}
+
+public class Main{
+    public static void main(String [] args){
+        Animalfactory factory =  new Animalfactory();
+        Animal a1= factory.getAnimal("Dog");
+        a1.speak();
+        Animal a2 = factory.getAnimal("Cat");
+        a2.speak();
+    }
+}
