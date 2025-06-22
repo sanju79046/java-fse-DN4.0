@@ -1,1 +1,31 @@
 
+import java.util.*;
+class Product{
+    String name;
+    String category;
+    int price;
+    
+    Product(String name , String category , int price){
+        this.name = name;
+        this.category = category;
+        this.price = price;
+    }
+}
+public class Main{
+    public static void main(String [] args){
+        Scanner sc = new Scanner (System.in);
+        List<Product> product = new ArrayList<>();
+        product.add(new Product("iphone","electronics", 100000));
+        product.add(new Product("Laptop","electronics",200000));
+        product.add(new Product("Mixie","homeappliance",3000));
+        product.add(new Product("Sofa","furniture",455990));
+        
+        System.out.println("Enter the search Keyword (name/category)");
+        String keyword = sc.nextLine();
+        for(Product p : product){
+            if(p.name.contains(keyword) || p.category.contains(keyword)){
+                System.out.println("Name : "+p.name+" Category : "+p.category+" Price : "+p.price);
+            }
+        }
+    }
+}
