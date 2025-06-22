@@ -1,1 +1,28 @@
+ class Main{
+    public static int maxRevenue(int[] revenue, int k) {
+        int n = revenue.length;
+        if (n < k) return -1;
 
+        int windowSum = 0;
+        for (int i = 0; i < k; i++) {
+            windowSum += revenue[i];
+        }
+
+        int maxRevenue = windowSum;
+
+        for (int i = k; i < n; i++) {
+            windowSum += revenue[i] - revenue[i - k];
+            maxRevenue = Math.max(maxRevenue, windowSum);
+        }
+
+        return maxRevenue;
+    }
+
+    public static void main(String[] args) {
+        int[] revenue = {100, 200, 300, 400, 500, 100, 300, 200, 400, 100};
+        int k = 3;
+
+        int result = maxRevenue(revenue, k);
+        System.out.println("Maximum revenue in any " + k + "-day period: " + result);
+    }
+}
